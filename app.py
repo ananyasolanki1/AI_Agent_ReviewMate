@@ -1,5 +1,6 @@
 import json
 import gradio as gr
+import os
 
 from main import agent
 from services.review_service import save_review
@@ -474,4 +475,7 @@ with gr.Blocks(
     )
 
 
-app.launch()
+app.launch(
+    server_name="0.0.0.0",
+    server_port=8080
+)
