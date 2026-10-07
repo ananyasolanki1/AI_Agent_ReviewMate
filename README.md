@@ -20,7 +20,7 @@ AI-powered customer review analysis and mobile phone recommendation system using
 ### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ananyasolanki1/AI_Agent_ReviewMate.git
 cd MOODMATE
 ```
 
