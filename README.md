@@ -1,53 +1,81 @@
 # ReviewMate
 
-AI-powered customer review analysis and mobile phone recommendation system using LangChain, Groq, Gradio, and MySQL.
+ReviewMate is an AI-powered customer review analysis and mobile phone recommendation system built with **Python, LangChain, Groq, Gradio, and MySQL**.
 
-## Aim
+It analyzes a customer's review to identify sentiment and emotion, then recommends two similarly priced mobile phones based on the review. This can be useful when considering a phone exchange or replacement.
 
-Analyze customer reviews using AI to identify sentiment and emotion, and recommend two similar-priced phones based on the review.
+## How It Works
 
-## Setup Instructions
+1. The user selects a phone and submits a review.
+2. A **LangChain AI agent** processes the review using two tools:
+   - `analyze_mood` — analyzes sentiment and emotion using the Groq LLM.
+   - `recommend_products` — retrieves similar-priced phones from MySQL and uses the LLM to select two recommendations.
+3. The review, analysis, and recommendations are stored in MySQL.
+4. The results are displayed through the Gradio interface.
 
-1. Create a `.env` file in the root directory of the project.
+## Setup
 
-2. Add your credentials:
-
-```env
-GROQ_API_KEY=your_actual_api_key_here
-MYSQL_PASSWORD=your_mysql_password_here
-```
-
-3. Install the required packages:
+### 1. Clone the repository
 
 ```bash
-pip install pandas python-dotenv langchain langchain-groq gradio mysql-connector-python
+git clone <repository-url>
+cd MOODMATE
 ```
 
-4. Create the MySQL database and required tables.
+### 2. Install dependencies
 
-5. Load the product data into MySQL:
+Make sure Python and MySQL are installed.
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the project root:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+MYSQLHOST=localhost
+MYSQLPORT=3306
+MYSQLUSER=root
+MYSQLPASSWORD=your_mysql_password
+MYSQLDATABASE=moodmate
+```
+
+### 4. Set up the database
+
+```bash
+mysql -u root -p < schema.sql
+```
+
+### 5. Load the mobile phone data
 
 ```bash
 python data/load_products.py
 ```
 
-6. Run the application:
+### 6. Run ReviewMate
 
 ```bash
 python app.py
 ```
 
-The application will open through the Gradio interface.
+The Gradio interface will open in your browser.
 
 ## Tech Stack
 
-- Python
-- LangChain
-- Groq
-- Gradio
-- MySQL
-- Pandas
+- **Python**
+- **LangChain** — AI agent and tool orchestration
+- **Groq** — LLM inference
+- **Gradio** — Web interface
+- **MySQL** — Product and review data
+- **Pandas** — Data processing
 
-## Note
+## Deployment
 
-Keep your `.env` file private and do not commit it to GitHub.
+Deployed on **Railway** with a Railway MySQL database.
+
+## Security
+
+Never commit `.env` or expose API keys and database credentials.
