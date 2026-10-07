@@ -1,8 +1,10 @@
 # ReviewMate
 
-ReviewMate is an AI-powered customer review analysis and mobile phone recommendation system built with **Python, LangChain, Groq, Gradio, and MySQL**.
+AI-powered customer review analysis and mobile phone recommendation system using **LangChain, Groq, Gradio, and MySQL**. It analyzes reviews for sentiment and emotion, then recommends two similarly priced phones for potential exchange or replacement.
 
-It analyzes a customer's review to identify sentiment and emotion, then recommends two similarly priced mobile phones based on the review. This can be useful when considering a phone exchange or replacement.
+## Live Demo
+
+[ReviewMate Web App](https://aiagentreviewmate-production.up.railway.app/)
 
 ## How It Works
 
